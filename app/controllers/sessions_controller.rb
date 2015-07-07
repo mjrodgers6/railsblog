@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     password = params[:password]
 
     @user = User.where(username: username).first
+    
 
     if @user.nil?
       #wrong username case
