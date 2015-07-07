@@ -8,7 +8,24 @@
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <% if current_user %>
+      <%= link_to "Sign Out", '/logout', method: :delete %>
+    <% else %>
+      <%= form_tag '/sessions' do%>
+        <%= text_field_tag :username, nil, placeholder: "Username" %>
+        <%= password_field_tag :password, nil, placeholder: "Password" %>
+        <%= submit_tag "Log In" %>
+      <% end %>
+    <% end %>
+ 
 
+<% if flash[:alert] %>
+  <%= flash[:alert] %>
+<%end%>
+ </header>
+
+<%= yield %>
 </body>
 </html>
+
