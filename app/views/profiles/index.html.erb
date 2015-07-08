@@ -5,6 +5,7 @@
 <p><%= profile.contact %> </p>
 <p><%= profile.created_at %> </p>
 <p><%= link_to profile.user.username, user_path(profile.user_id) %></p>
+  <%= image_tag profile.avatar.url(:medium) %>
 <% end %>
 
   
