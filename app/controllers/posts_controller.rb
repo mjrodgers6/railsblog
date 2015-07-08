@@ -16,7 +16,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    
+     @post = Post.find params[:id]
+    @test = session[:user_id]
   end
 
 end
