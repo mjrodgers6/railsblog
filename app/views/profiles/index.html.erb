@@ -1,0 +1,15 @@
+<% @profile(@) do |profile| %>
+<p><%= profile.name %> </p>
+<p><%= profile.identity %> </p>
+<p><%= profile.power %> </p>
+<p><%= profile.contact %> </p>
+<p><%= profile.created_at %> </p>
+<p><%= link_to profile.user.username, user_path(profile.user_id) %></p>
+<% end %>
+
+  
+
+
+  
+
+  
