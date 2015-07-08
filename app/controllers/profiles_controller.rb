@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @profile = Profile.new
   end
   def show

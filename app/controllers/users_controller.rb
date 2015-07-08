@@ -1,12 +1,22 @@
 class UsersController < ApplicationController
+
    def index
     @users = User.all
   end
 
   def create
-     # binding.pry
-    @user = User.create params[:user]
-    redirect_to '/'
+    @user = User.create( user_params )
+    @user.avatar = nil
+    @user.save
+  end
+
+  private
+
+# Use strong_parameters for attribute whitelisting
+# Be sure to update your create() and update() controller methods.
+
+  def user_params
+
   end
 
   def new
@@ -18,11 +28,10 @@ class UsersController < ApplicationController
     @test = session[:user_id]
   end
 
-   def destroy
+  def destroy
     @user =  User.find(params[:id])
     @user.destroy
     flash[:alert] = "Successful Deletion"
     redirect_to users_path
   end
-
 end
