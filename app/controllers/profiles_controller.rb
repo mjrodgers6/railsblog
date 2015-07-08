@@ -5,11 +5,8 @@ class ProfilesController < ApplicationController
   end
 
   def create
-   #  # binding.pry
-   # @profile = current_user.profile(params[:profile]) 
    @user_id = current_user.id
    @profile = Profile.new params[:profile]
-   # binding.pry 
    @profile.user_id = @user_id
    @profile.save
    redirect_to '/'
@@ -20,7 +17,7 @@ class ProfilesController < ApplicationController
   end
   def show
     @user = User.find(params[:id])
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(current_user.profile.user_id)
   end
 
 end
