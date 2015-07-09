@@ -1,7 +1,8 @@
 
 <p> <%= @post.message %> </p>
 <p> <%= @post.zip %></p>
-<p><%= @test %></p>
+ Posted by <%= @post.user.username %>
+      at <%= @post.created_at %>
 
 <%= form_for Comment.new do |f| %>
   <%= f.text_area :comment %>
@@ -12,6 +13,8 @@
 <% @post.comments.each do |comment| %>
   <p>
     <%= comment.comment %>
-    <%= current_user.username %>
+     Posted by <%= @post.comment.user.username %>
+      at <%= @comment.created_at %>
+
   </p>
 <% end %>
