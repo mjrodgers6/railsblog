@@ -11,13 +11,18 @@
   <header>
     <% if current_user %>
       <%= link_to "Sign Out", '/logout', method: :delete %>
+      <%= link_to "All Profiles", profiles_path %>
+      <%= link_to "Update Profile", edit_profile_path(current_user.id) %>
+      <%= link_to "All Users", users_path %>
+      <%= link_to "All Posts", posts_path %>
     <% else %>
       <%= form_tag '/sessions' do%>
         <%= text_field_tag :username, nil, placeholder: "Username" %>
         <%= password_field_tag :password, nil, placeholder: "Password" %>
         <%= submit_tag "Log In" %>
-        
+        <%= link_to "Sign up", user_path(:new) %>
       <% end %>
+      
     <% end %>
  
 

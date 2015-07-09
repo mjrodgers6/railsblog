@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :comments
   resources :profiles
   resources :posts
-  root 'users#index'
+  root 'users#new'
   resources :users
 
   resources :sessions

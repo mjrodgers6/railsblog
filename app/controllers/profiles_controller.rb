@@ -17,6 +17,21 @@ class ProfilesController < ApplicationController
     @profile = Profile.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @profile = Profile.find(@user.id)
+  end
+
+  def edit
+    @profile = Profile.find params[:id]
+  end
+
+  def update
+   @profile.update params[:profile] 
+   flash[:alert] = "Updated"
+   redirect_to profile_path(@user.id)
+  end
+
     private
 
 # Use strong_parameters for attribute whitelisting
@@ -27,9 +42,6 @@ class ProfilesController < ApplicationController
   end
 
 
-  def show
-    @user = User.find(params[:id])
-    @profile = Profile.find(@user.id)
-  end
+  
 
 end
