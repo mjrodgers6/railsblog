@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   
+  # get 'welcome/index'
+
   resources :comments
   resources :profiles
   resources :posts
-  root 'users#new'
+  root 'welcome#index'
   resources :users
 
   resources :sessions
