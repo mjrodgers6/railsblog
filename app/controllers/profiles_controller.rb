@@ -23,13 +23,14 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-
-    @profile = Profile.find (current_user.id)
+    @user = User.find(params[:id])
+    @profile = Profile.find  params[:id]
 
   end
 
   def update
-    @profile = Profile.find (current_user.id)
+    @user = User.find(params[:id])
+    @profile = Profile.find (params[:id])
     @profile.update(profile_params) 
     flash[:alert] = "Updated"
     redirect_to profile_path(current_user.id)

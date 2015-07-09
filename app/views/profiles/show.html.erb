@@ -1,7 +1,8 @@
 
 <p><%= @user.username %> </p>
-<p><%= @user.profile.name %></p>
-<p><%= @user.profile.identity %></p>
-<p><%= @user.profile.power %></p>
-<p><%= @user.profile.contact %></p>
-<%= image_tag @user.profile.avatar.url(:medium) %>
+<p><%= @profile.name %></p>
+<p><%= @profile.identity %></p>
+<p><%= @profile.power %></p>
+<p><%= @profile.contact %></p>
+<%= image_tag @profile.avatar.url(:medium) %>
+
