@@ -1,20 +1,18 @@
 
 <p> <%= @post.message %> </p>
 <p> <%= @post.zip %></p>
- Posted by <%= @post.user.username %>
-      at <%= @post.created_at %>
+<p>Posted by <%= @post.user.username %>
+      at <%= @post.created_at %></p> 
 
 <%= form_for Comment.new do |f| %>
   <%= f.text_area :comment %>
   <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit :submit %>
 <% end %>
 
-<% @post.comments.each do |comment| %>
-  <p>
-    <%= comment.comment %>
-     Posted by <%= @post.comment.user.username %>
-      at <%= @comment.created_at %>
-
-  </p>
-<% end %>
+<div>
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.comment %></p>
+  <% end %>
+</div>

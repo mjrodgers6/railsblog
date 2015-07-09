@@ -10,20 +10,23 @@
 
   <header>
     <% if current_user %>
-      <%= link_to "Sign Out", '/logout', method: :delete %>
-      <%= link_to "All Profiles", profiles_path %>
-      <%= link_to "Update Profile", edit_profile_path(current_user.id) %>
-      <%= link_to "All Users", users_path %>
-      <%= link_to "All Posts", posts_path %>
-      <% if current_user %>
-      <%= link_to "Create New Post", new_post_path %>
-<% end %>
+      <ul>
+        <li><%= link_to "Sign Out", '/logout', method: :delete %></li>
+        <li><%= link_to "All Profiles", profiles_path %></li>
+        <li><%= link_to "MY Profile", profile_path(current_user.id) %></li>
+        <li><%= link_to "Edit Profile", edit_profile_path(current_user.id) %></li>
+        <li><%= link_to "All Users", users_path %></li>
+        <li><%= link_to "All Posts", posts_path %></li>
+        <li><%= link_to "Create New Post", new_post_path %></li>
+      </ul>
     <% else %>
       <%= form_tag '/sessions' do%>
         <%= text_field_tag :username, nil, placeholder: "Username" %>
         <%= password_field_tag :password, nil, placeholder: "Password" %>
         <%= submit_tag "Log In" %>
-        <%= link_to "Sign up", user_path(:new) %>
+        <ul>
+          <li><%= link_to "Sign up", user_path(:new) %></li>
+        </ul>
       <% end %>
     <% end %>
  
