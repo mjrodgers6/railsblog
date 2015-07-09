@@ -5,19 +5,27 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def create
-     # binding.pry
-    @post = current_user.posts.create(params[:post])
-    redirect_to '/'
-  end
-
   def new
     @post = Post.new
   end
 
+  def create
+    @post = current_user.posts.create(post_params)
+    redirect_to posts_path
+  end
+
   def show
-     @post = Post.find params[:id]
+    @post = Post.find params[:id]
     @test = session[:user_id]
   end
 
+
+    private
+
+# Use strong_parameters for attribute whitelisting
+# Be sure to update your create() and update() controller methods.
+
+  def post_params
+    params.require(:post).permit(:message, :zip)
+  end
 end

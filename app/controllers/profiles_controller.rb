@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def create
    @user_id = current_user.id
-   @profile = Profile.new ( profile_params)
+   @profile = Profile.new (profile_params)
    @profile.user_id = @user_id
    @profile.save
    redirect_to '/'
@@ -15,6 +15,24 @@ class ProfilesController < ApplicationController
   def new
     @user = current_user
     @profile = Profile.new
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @profile = Profile.find(@user.id)
+  end
+
+  def edit
+
+    @profile = Profile.find (current_user.id)
+
+  end
+
+  def update
+    @profile = Profile.find (current_user.id)
+    @profile.update(profile_params) 
+    flash[:alert] = "Updated"
+    redirect_to profile_path(current_user.id)
   end
 
     private
@@ -27,9 +45,6 @@ class ProfilesController < ApplicationController
   end
 
 
-  def show
-    @user = User.find(params[:id])
-    @profile = Profile.find(@user.id)
-  end
+  
 
 end
