@@ -15,6 +15,9 @@
       <%= link_to "Update Profile", edit_profile_path(current_user.id) %>
       <%= link_to "All Users", users_path %>
       <%= link_to "All Posts", posts_path %>
+      <% if current_user %>
+      <%= link_to "Create New Post", new_post_path %>
+<% end %>
     <% else %>
       <%= form_tag '/sessions' do%>
         <%= text_field_tag :username, nil, placeholder: "Username" %>
@@ -22,7 +25,6 @@
         <%= submit_tag "Log In" %>
         <%= link_to "Sign up", user_path(:new) %>
       <% end %>
-      
     <% end %>
  
 

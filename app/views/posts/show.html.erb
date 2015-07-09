@@ -2,3 +2,16 @@
 <p> <%= @post.message %> </p>
 <p> <%= @post.zip %></p>
 <p><%= @test %></p>
+
+<%= form_for Comment.new do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.submit :submit %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <p>
+    <%= comment.comment %>
+    <%= current_user.username %>
+  </p>
+<% end %>
