@@ -2,31 +2,44 @@
 <html>
 <head>
   <title>Railsblog</title>
+   <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<script src="jquery.js"></script>
+<script src="typed.js"></script>
+<script>
+    $(function(){
+        $(".element").typed({
+            strings: ["WELCOME BACK, AGENT", "Please Log In"],
+            typeSpeed: 0
+        });
+    });
+</script>
+
 </head>
 <body>
 
-  <header>
-    <% if current_user %>
-      <ul>
-        <li><%= link_to "Sign Out", '/logout', method: :delete %></li>
-        <li><%= link_to "All Profiles", profiles_path %></li>
-        <li><%= link_to "MY Profile", profile_path(current_user.id) %></li>
-        <li><%= link_to "Edit Profile", edit_profile_path(current_user.id) %></li>
-        <li><%= link_to "All Users", users_path %></li>
-        <li><%= link_to "All Posts", posts_path %></li>
-        <li><%= link_to "Create New Post", new_post_path %></li>
-      </ul>
+  
+  <% if current_user %>
+    <div id="header">
+      <p class="nav"><%= link_to "| Profile |", profile_path(current_user.id) %></p>
+      <p class="nav"><%= link_to "| Edit Profile |", edit_profile_path(current_user.id) %></p>
+      <p class="nav"><%= link_to "| All Agents |", users_path %></p>
+      <p class="nav"><%= link_to "| All Alerts |", posts_path %></p>
+      <p class="nav"><%= link_to "| Send Alert |", new_post_path %></p>
+      <p class="nav"><%= link_to "| Log Out |", '/logout', method: :delete %></p>
+    </div>
+    <%= yield %>
     <% else %>
+    <h1 class="formtitle"><span class="element"></span></h1>
+    <div class="form">
       <%= form_tag '/sessions' do%>
-        <%= text_field_tag :username, nil, placeholder: "Username" %>
-        <%= password_field_tag :password, nil, placeholder: "Password" %>
-        <%= submit_tag "Log In" %>
-        <ul>
-          <li><%= link_to "Sign up", user_path(:new) %></li>
-        </ul>
+        <%= text_field_tag :username, nil, placeholder: "CODENAME", class: 'input' %>
+        <%= password_field_tag :password, nil, placeholder: "PASSKEY", class: 'input' %>
+        <%= submit_tag "ENTER", class: "button" %>
+    </div>
+      <h3 class='signup'><%= link_to "JOIN THE FIGHT", user_path(:new) %></h3>
       <% end %>
     <% end %>
  
@@ -34,9 +47,7 @@
   <% if flash[:alert] %>
     <%= flash[:alert] %>
   <%end%>
- </header>
-
-<%= yield %>
+ 
 </body>
 </html>
 
