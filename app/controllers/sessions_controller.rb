@@ -9,15 +9,15 @@ class SessionsController < ApplicationController
     if @user.nil?
       #wrong username case
       flash[:alert] = "Incorrect Credentials"
-      redirect_to root_path
+      redirect_to posts_path
     else #success username case
       if @user.password == password
         session[:user_id] = @user.id
         flash[:alert] = "Welcome Cheese noodle"
-        redirect_to root_path
+        redirect_to posts_path
       else  
         flash[:alert] = "Incorrect Credentials"
-        redirect_to root_path
+        redirect_to posts_path
       end
     end
   end

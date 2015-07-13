@@ -2,7 +2,7 @@
 <!-- <html> -->
 <body id="welcome">
 <head>
-  <title>Daily</title>
+  <title>Daily Planet</title>
   <meta charset="utf-8">
   <%= stylesheet_link_tag "welcome" %>
 
@@ -10,9 +10,13 @@
   <body> -->
   <div class="title">
     <div class="glitch" data-text="Daily">Daily</div>
-    <a href="http://github.com/" class="logo" title="Secret Entrance"></a>
+    <a href="/posts" class="logo" title="Secret Entrance"></a>
     <div class="glitch" data-text="Planet">Planet</div>
   </div> 
+
+  <% if flash[:alert] %>
+    <%= flash[:alert] %>
+  <%end%>
 
  <!--  </body>
 
