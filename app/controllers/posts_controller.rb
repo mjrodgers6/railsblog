@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    
   end
 
   def new
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    user = current_user
+    user = current_user.username
     @post = Post.find params[:id]
   end
 
@@ -26,6 +27,6 @@ class PostsController < ApplicationController
 # Be sure to update your create() and update() controller methods.
 
   def post_params
-    params.require(:post).permit(:message, :zip)
+    params.require(:post).permit(:message, :zip, :user_id)
   end
 end

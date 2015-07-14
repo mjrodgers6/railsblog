@@ -11,11 +11,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create (user_params)
-    # @user.avatar = nil
-    # @user.save
-    redirect_to root_path
+    session[:user_id] = @user.id
+    redirect_to new_profile_path
   end
-
   def show
     @user = User.find params[:id]
     @test = session[:user_id]

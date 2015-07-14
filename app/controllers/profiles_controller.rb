@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
    @profile = Profile.new (profile_params)
    @profile.user_id = @user_id
    @profile.save
-   redirect_to '/'
+   redirect_to profile_path(current_user.id)
   end
 
   def new
@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @profile = Profile.find  params[:id]
+    @profile = Profile.find(params[:id])
 
   end
 
