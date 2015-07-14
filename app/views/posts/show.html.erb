@@ -1,8 +1,8 @@
 
-<p> <%= @post.message %> </p>
-<p> <%= @post.zip %></p>
-<p>Posted by <%= @post.user.username %>
-      at <%= @post.created_at %></p> 
+<p>Message :  <%= @post.message %> </p>
+<p>Area :  <%= @post.zip %></p>
+<p class="by">Posted by : <%= @post.user.username %></p>
+<p class="by">At :  <%= @post.created_at %></p> 
 
 <%= form_for Comment.new do |f| %>
   <%= f.text_area :comment %>
@@ -14,5 +14,6 @@
 <div>
   <% @post.comments.each do |comment| %>
     <p><%= comment.comment %></p>
+    <p class="by">By : <%= User.find(comment.user_id).username  %></p>
   <% end %>
 </div>

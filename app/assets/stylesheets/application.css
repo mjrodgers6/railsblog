@@ -107,6 +107,10 @@ a:hover{
   color:#A9A9A9;
   border: solid #A9A9A9 2px;
 }
+.by {
+  font-family: 'Orbitron', sans-serif;
+  color: blue
+}
 
 .typed-cursor{
     opacity: 1;

@@ -20,7 +20,8 @@
 <div class="form">
 <%= form_for @user do |f| %>
   <%= f.text_field :username, placeholder: 'CODENAME', class: 'input' %>
-  <%= f.text_field :password, placeholder: 'PASSKEY', class: 'input' %>
+  <%= f.password_field :password, placeholder: 'PASSKEY', class: 'input' %>
+
   <%= submit_tag "JOIN", class: 'button' %>
 </div>
 <% end %>
